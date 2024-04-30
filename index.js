@@ -64,12 +64,12 @@ const getWeatherData = async () => {
     cityName.innerHTML = `${name}, ${getCountryName(sys.country)}`;
     dateTime.innerHTML = getDateTime(dt);
 
-    w_forecast.innerHTML = weather[0].main;
+    w_forecast.innerHTML = (weather[0].main-273);
     w_icon.innerHTML = `<img src="http://openweathermap.org/img/wn/${weather[0].icon}@4x.png" />`;
 
     w_temperature.innerHTML = `${main.temp}&#176`;
     w_minTem.innerHTML = `Min: ${main.temp_min.toFixed()}&#176`;
-    w_maxTem.innerHTML = `Min: ${main.temp_max.toFixed()}&#176`;
+    w_maxTem.innerHTML = `Max: ${main.temp_max.toFixed()}&#176`;
 
     w_feelsLike.innerHTML = `${main.feels_like.toFixed(2)}&#176`;
     w_humidity.innerHTML = `${main.humidity}%`;
@@ -77,6 +77,8 @@ const getWeatherData = async () => {
     w_pressure.innerHTML = `${main.pressure} hPa`;
   } catch (error) {
     console.log(error);
+
+cityName.innerHTML=error;
   }
 };
 
